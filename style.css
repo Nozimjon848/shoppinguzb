@@ -1,0 +1,203 @@
+.card {
+    width: 180px; /* Kichikroq qilish uchun */
+    height: auto; /* Kartaning balandligi rasmdan kelib chiqsin */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    position: relative;
+}
+
+.card img {
+    width: 100%;
+    height: 120px; /* Rasmni kichikroq qilish */
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 8px;
+}
+
+.card-title {
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap; /* Uzun matnlarni bitta qatorda ko‘rsatish */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-text {
+    font-size: 10px;
+    color: #666;
+}
+
+.price {
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+}
+.monthly-price {
+    background-color: yellow;
+    padding: 2px 4px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 10px;
+    color: black;
+}
+
+.super-price {
+    background-color: purple;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-size: 9px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+}
+
+.rating {
+    font-size: 10px;
+    color: #ffa500;
+    margin: 1vh 0;
+    display: flex;
+    align-items: center;
+}
+
+.heart-icon {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: white;
+    padding: 3px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Ekran o'lchamiga qarab moslashish */
+@media (max-width: 768px) {
+    .card {
+        width: 100%; /* Mobil ekranda to‘liq chiqishi uchun */
+        height: 20px; /* Mobil versiyada balandroq */
+    }
+
+    .card img {
+        height: auto; /* Mobil versiyada rasm kattaroq */
+    }
+}
+body {
+    margin: 0;
+    padding-bottom: 60px; /* Navbar uchun joy qoldiramiz */
+    font-family: Arial, sans-serif;
+}
+
+.content {
+    text-align: center;
+    padding: 50px;
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 10px 0;
+}
+
+.bottom-nav .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.bottom-nav .nav-item {
+    color: rgb(130, 130, 130);
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.bottom-nav .nav-item:hover {
+    color: #007bff;
+    transform: scale(1.1);
+}
+
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #e8d9ff, #ffffff);
+    padding: 20px;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-text {
+    max-width: 50%;
+    padding: 15px;
+}
+
+.discount {
+    font-size: 18px;
+    font-weight: bold;
+    color: #5a189a;
+}
+
+.highlight {
+    background: yellow;
+    color: black;
+    padding: 2px 6px;
+    border-radius: 5px;
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #5a189a;
+    margin: 10px 0;
+}
+
+p {
+    font-size: 14px;
+    color: #666;
+}
+
+.shop-btn {
+    background: #5a189a;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.shop-btn:hover {
+    background: #7b2cbf;
+}
+
+.banner-image img {
+    max-width: 250px;
+    height: auto;
+}
+
+/* Responsiv uslub */
+@media (max-width: 768px) {
+    .banner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .banner-text {
+        max-width: 100%;
+    }
+
+    .banner-image img {
+        max-width: 200px;
+    }
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .profile-header {
+            background: #f0f0f0;
+            padding: 50px 0;
+            text-align: center;
+        }
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+        }
+        .profile-card {
+            margin-top: -50px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .btn-back {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #ccc;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-header">
+        <button class="btn btn-light btn-back">&#8592;</button>
+        <img id="profileImg" src="https://www.pngplay.com/wp-content/uploads/12/User-Avatar-Profile-PNG-Free-File-Download.png" alt="Profile Image" class="profile-img">
+    </div>
+    <div class="container">
+        <div class="profile-card">
+            <h2 id="profileName">User A</h2>
+            <p id="profileNumber">99 123 45 67</p>
+            <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+        </div>
+    </div>
+    
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="editImage" class="form-label">Profile Image URL</label>
+                        <input type="text" class="form-control" id="editImage">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="editName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editNumber" class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" id="editNumber">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="saveChanges()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if(localStorage.getItem("profileName")) {
+                document.getElementById("profileName").textContent = localStorage.getItem("profileName");
+            }
+            if(localStorage.getItem("profileNumber")) {
+                document.getElementById("profileNumber").textContent = localStorage.getItem("profileNumber");
+            }
+            if(localStorage.getItem("profileImg")) {
+                document.getElementById("profileImg").src = localStorage.getItem("profileImg");
+            }
+        });
+
+        function saveChanges() {
+            const newName = document.getElementById("editName").value;
+            const newNumber = document.getElementById("editNumber").value;
+            const newImage = document.getElementById("editImage").value;
+            
+            if(newName) {
+                document.getElementById("profileName").textContent = newName;
+                localStorage.setItem("profileName", newName);
+            }
+            if(newNumber) {
+                document.getElementById("profileNumber").textContent = newNumber;
+                localStorage.setItem("profileNumber", newNumber);
+            }
+            if(newImage) {
+                document.getElementById("profileImg").src = newImage;
+                localStorage.setItem("profileImg", newImage);
+            }
+
+            var modal = bootstrap.Modal.getInstance(document.getElementById("editModal"));
+            modal.hide();
+        }
+    </script>
+    <nav class="bottom-nav">
+        <div class="container">
+            <a href="index.html" class="nav-item" ><i class="fas fa-home"></i></a>
+            <a href="#" class="nav-item"><i class="fas fa-th-large"></i></a>
+            <a href="#" class="nav-item"><i class="fas fa-shopping-cart"></i></a>
+            <a href="#" style="color: black;" class="nav-item"><i class="fas fa-user"></i></a>
+        </div>
+    </nav>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
